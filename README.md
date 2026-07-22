@@ -1,6 +1,6 @@
 # DoFren
 
-DoFren adalah aplikasi web pemesanan makanan dan minuman yang dibangun menggunakan framework Laravel. Aplikasi ini dirancang untuk memudahkan pelanggan dalam melihat menu, menemukan lokasi cabang, mendapatkan informasi promo, serta melakukan pemesanan secara online.
+DoFren adalah aplikasi web pemesanan donat yang dibangun menggunakan framework Laravel. Aplikasi ini dirancang untuk memudahkan pelanggan dalam melihat menu, menemukan lokasi cabang, mendapatkan informasi promo, serta melakukan pemesanan secara online.
 
 ## Fitur Utama
 
