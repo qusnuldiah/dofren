@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+    --color-brand-orange: #FF7A00;
+    --color-brand-brown: #3D1A10;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-gradient-to-br from-[#FFFDF9] to-[#FFF1EB] text-slate-800 antialiased;
+        font-family: var(--font-body);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-brand-brown;
+        font-family: var(--font-heading);
+    }
+}
+
+@layer utilities {
+    /* Gentle levitation animation for hero donut image */
+    .animate-float {
+        animation: floatDonut 4s ease-in-out infinite;
+    }
+
+    /* Subtle float used on hero section */
+    .gentle-float {
+        animation: gentle-float 4s ease-in-out infinite;
+    }
+    
+    /* Hide scrollbar for filter pills */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+@keyframes floatDonut {
+    0%   { transform: translateY(0px) rotate(0deg); }
+    50%  { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+
+/* Custom Modal Transitions */
+.modal-overlay {
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
