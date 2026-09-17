@@ -15,8 +15,8 @@
     <div x-data="{ activeCategory: 'Semua' }">
         
         {{-- Filter Pills --}}
-        <div class="px-6 pb-6 overflow-x-auto no-scrollbar sticky top-16 md:top-24 z-30 bg-[#FFFDF9]/95 backdrop-blur-sm pt-3 border-b border-orange-50">
-            <div class="max-w-6xl mx-auto flex gap-2 whitespace-nowrap">
+        <div class="px-6 pb-6 sticky top-16 md:top-24 z-30 bg-[#FFFDF9]/95 backdrop-blur-sm pt-3 border-b border-orange-50">
+            <div class="max-w-6xl mx-auto flex gap-2 flex-wrap">
                 <button @click="activeCategory = 'Semua'" 
                         :class="activeCategory === 'Semua' ? 'bg-[#FF7A00] text-white shadow-lg transform scale-105' : 'bg-white text-gray-600 border border-gray-200 hover:bg-orange-50 hover:text-[#FF7A00]'" 
                         class="inline-block px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 cursor-pointer focus:outline-none">
