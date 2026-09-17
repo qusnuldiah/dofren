@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
             AdminAndSettingSeeder::class,
             ImageProductSeeder::class,
             BranchSeeder::class,
-            PromoSeeder::class,
         ]);
     }
 }

@@ -36,7 +36,7 @@
         <div class="px-6 py-10 pb-16 max-w-6xl mx-auto space-y-14 relative">
             
             <!-- SVG Blob Background -->
-            <svg class="absolute top-10 right-0 -mr-20 -mt-20 w-[500px] h-[500px] opacity-10 text-[#FF7A00] pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg aria-hidden="true" class="absolute top-10 right-0 -mr-20 -mt-20 w-[500px] h-[500px] opacity-10 text-[#FF7A00] pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M43.9,-76.3C55.6,-68.8,63,-53.4,70.5,-39C78.1,-24.5,85.8,-11,84.6,1.8C83.4,14.5,73.4,26.4,63.1,36.5C52.7,46.7,42,55.1,30.3,60.6C18.6,66.2,5.9,68.9,-7.4,68.9C-20.6,68.9,-34.5,66.1,-46.8,59.3C-59.2,52.5,-70.2,41.7,-77.3,28.7C-84.4,15.6,-87.5,0.4,-84.9,-13.7C-82.3,-27.7,-74.1,-40.5,-63.1,-50.2C-52,-59.8,-38.3,-66.2,-25,-71.4C-11.6,-76.6,1.4,-80.7,16.5,-80.1C31.5,-79.6,48.5,-74.4,43.9,-76.3Z" transform="translate(100 100)" />
             </svg>
 
@@ -73,6 +73,9 @@
                                     <img
                                         src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&q=80' }}"
                                         alt="{{ $product->name }}"
+                                        width="80"
+                                        height="80"
+                                        loading="lazy"
                                         class="w-20 h-20 object-cover rounded-xl flex-shrink-0 group-hover:scale-105 transition-transform duration-500"
                                     >
                                     <div class="flex-1 min-w-0">
@@ -80,8 +83,8 @@
                                         <p class="text-xs text-slate-400 line-clamp-2 mb-2 leading-relaxed">{{ $product->description }}</p>
                                         <div class="flex items-center justify-between">
                                             <span class="font-bold text-[#FF7A00] text-sm">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                            <button class="w-7 h-7 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] group-hover:bg-[#FF7A00] group-hover:text-white flex items-center justify-center transition-colors duration-300">
-                                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <button aria-label="Add {{ $product->name }} to cart" class="w-7 h-7 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] group-hover:bg-[#FF7A00] group-hover:text-white flex items-center justify-center transition-colors duration-300">
+                                                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 5v14M5 12h14"/>
                                                 </svg>
                                             </button>

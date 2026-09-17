@@ -28,6 +28,11 @@ class ProfileController extends Controller
                 'max:255',
                 Rule::unique('admins')->ignore($admin->id),
             ],
+            'current_password' => ['nullable', 'required_with:password', function ($attribute, $value, $fail) use ($admin) {
+                if (!Hash::check($value, $admin->password)) {
+                    $fail('Password lama yang Anda masukkan salah.');
+                }
+            }],
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 

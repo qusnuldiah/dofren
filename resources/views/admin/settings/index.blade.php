@@ -72,6 +72,47 @@
             
             <hr class="border-gray-100 my-4">
 
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 mt-6">
+                <div>
+                    <h2 class="font-heading font-bold text-xl text-[#3D1A10]">Tautan Sosial Media</h2>
+                    <p class="text-sm text-slate-400 mt-0.5">Tautan ini akan muncul di bagian bawah website (footer)</p>
+                </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="group relative">
+                <label class="flex items-center gap-3 text-sm font-semibold text-[#3D1A10] mb-2.5">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="2"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"></line>
+                        </svg>
+                    </div>
+                    Tautan Instagram
+                </label>
+                <input type="url" name="link_instagram" value="{{ old('link_instagram', $settings['link_instagram'] ?? '') }}"
+                       placeholder="https://instagram.com/..."
+                       class="w-full px-4 py-3 bg-white text-sm rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#bc1888]/30 focus:border-[#bc1888] hover:border-gray-300 outline-none transition-all shadow-sm">
+            </div>
+
+            <!-- TikTok -->
+            <div class="group relative">
+                <label class="flex items-center gap-3 text-sm font-semibold text-[#3D1A10] mb-2.5">
+                    <div class="w-9 h-9 rounded-full bg-black flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512">
+                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                    </div>
+                    Tautan TikTok
+                </label>
+                <input type="url" name="link_tiktok" value="{{ old('link_tiktok', $settings['link_tiktok'] ?? '') }}"
+                       placeholder="https://tiktok.com/@..."
+                       class="w-full px-4 py-3 bg-white text-sm rounded-xl border border-gray-200 focus:ring-2 focus:ring-black/30 focus:border-black hover:border-gray-300 outline-none transition-all shadow-sm">
+            </div>
+            
+            <hr class="border-gray-100 my-4">
+
             <!-- Hero Image -->
             <div>
                 <label class="block text-sm font-semibold text-[#3D1A10] mb-2.5">

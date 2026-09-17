@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DoFren Donut - Toko donat premium segar setiap hari. Pesan donat favoritmu sekarang.">
     <title>@yield('title', 'DoFren Donut')</title>
     <link rel="icon" href="{{ asset('images/logo dofren.png') }}">
     
@@ -30,8 +31,8 @@
             <div class="flex justify-between h-16 items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="/" class="block">
-                        <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren Donut Logo" class="h-16 md:h-20 w-auto object-contain cursor-pointer transition-all duration-300 ease-out hover:scale-110 hover:-rotate-6">
+                    <a href="/" class="block" aria-label="Go to Homepage">
+                        <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren Donut Logo" width="160" height="64" class="h-16 md:h-20 w-auto object-contain cursor-pointer transition-all duration-300 ease-out hover:scale-110 hover:-rotate-6">
                     </a>
                 </div>
                 
@@ -39,13 +40,12 @@
                 <div class="hidden lg:flex space-x-8">
                     <a href="/" class="text-slate-600 hover:text-brand-orange font-medium transition">Home</a>
                     <a href="/menu" class="text-slate-600 hover:text-brand-orange font-medium transition">Menu</a>
-                    <a href="/promo" class="text-slate-600 hover:text-brand-orange font-medium transition">Promo</a>
                     <a href="/lokasi" class="text-slate-600 hover:text-brand-orange font-medium transition">Lokasi</a>
                 </div>
 
                 <!-- Mobile Menu Button (Hamburger) -->
                 <div class="flex items-center lg:hidden">
-                    <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-slate-600 hover:text-brand-orange focus:outline-none transition-colors">
+                    <button @click="isMobileMenuOpen = !isMobileMenuOpen" aria-label="Toggle mobile menu" aria-expanded="false" class="text-slate-600 hover:text-brand-orange focus:outline-none transition-colors">
                         <svg class="h-6 w-6" x-show="!isMobileMenuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -70,7 +70,6 @@
             <div class="px-4 pt-2 pb-4 space-y-1">
                 <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-orange hover:bg-orange-50 transition-colors">Home</a>
                 <a href="/menu" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-orange hover:bg-orange-50 transition-colors">Menu</a>
-                <a href="/promo" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-orange hover:bg-orange-50 transition-colors">Promo</a>
                 <a href="/lokasi" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-brand-orange hover:bg-orange-50 transition-colors">Lokasi</a>
             </div>
         </div>
@@ -95,8 +94,8 @@
     <!-- Footer -->
     <footer class="bg-[#FFFDF9] border-t border-orange-100 py-10 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            <a href="/">
-                <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren Donut Footer Logo" class="h-16 w-auto object-contain mb-4">
+            <a href="/" aria-label="Homepage">
+                <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren Donut Footer Logo" width="160" height="64" class="h-16 w-auto object-contain mb-4">
             </a>
             <p class="text-sm text-gray-500 font-jakarta mb-4">
                 DoFren Donut — Freshly baked everyday. Siap menemani hari manismu.
@@ -104,6 +103,33 @@
             <p class="text-sm text-gray-500 font-jakarta">
                 © 2026 DoFren Donut. All rights reserved.
             </p>
+            
+            @php
+                $igLink = \App\Models\Setting::where('key', 'link_instagram')->first()->value ?? null;
+                $tiktokLink = \App\Models\Setting::where('key', 'link_tiktok')->first()->value ?? null;
+            @endphp
+            
+            @if($igLink || $tiktokLink)
+            <div class="flex items-center gap-4 mt-6">
+                @if($igLink)
+                <a href="{{ $igLink }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram DoFren" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] transition-all hover:scale-110 shadow-sm">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="2"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"></line>
+                    </svg>
+                </a>
+                @endif
+                
+                @if($tiktokLink)
+                <a href="{{ $tiktokLink }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok DoFren" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-white hover:bg-black transition-all hover:scale-110 shadow-sm">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512">
+                        <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                    </svg>
+                </a>
+                @endif
+            </div>
+            @endif
         </div>
     </footer>
 

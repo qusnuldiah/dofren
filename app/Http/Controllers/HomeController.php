@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Promo;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $promos = Promo::where('is_active', true)->get();
-
-        // Get featured products; fall back to bestsellers, then all available
+        // Get featured products based on bestsellers
         $featuredProducts = Product::with('category')
             ->where('is_available', true)
-            ->where(fn($q) => $q->where('is_featured', true)->orWhere('is_bestseller', true))
+            ->where('is_bestseller', true)
             ->take(8)
             ->get();
 
@@ -44,7 +41,7 @@ class HomeController extends Controller
             ->get();
 
         return view('pages.home', compact(
-            'promos', 'featuredProducts', 'categories', 'bestSellers', 'newProducts'
+            'featuredProducts', 'categories', 'bestSellers', 'newProducts'
         ));
     }
 }

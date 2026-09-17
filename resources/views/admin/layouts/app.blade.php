@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Admin DoFren Donut">
     <title>Admin - DoFren Donut</title>
     <link rel="icon" href="{{ asset('images/logo dofren.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -24,7 +25,7 @@
             
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center justify-center px-4">
-                <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren" class="h-16 md:h-20 w-auto object-contain mx-auto mt-4 mb-6">
+                <img src="{{ asset('images/logo dofren.png') }}" alt="DoFren" width="160" height="64" class="h-16 md:h-20 w-auto object-contain mx-auto mt-4 mb-6">
             </div>
 
             <!-- Nav -->
@@ -36,14 +37,14 @@
                         ['route' => 'admin.products.index', 'label' => 'Menu & Harga', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>', 'active' => request()->routeIs('admin.products.*')],
                         ['route' => 'admin.branches.index', 'label' => 'Lokasi Cabang', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>', 'active' => request()->routeIs('admin.branches.*')],
                         ['route' => 'admin.settings.index', 'label' => 'Link Platform', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>', 'active' => request()->routeIs('admin.settings.*')],
-                        ['route' => 'admin.promos.index', 'label' => 'Promo N8N', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>', 'active' => request()->routeIs('admin.promos.*')],
+
                     ];
                 @endphp
 
                 @foreach($navItems as $item)
                     <a href="{{ route($item['route']) }}" 
                        class="flex items-center gap-3 py-2.5 px-4 text-sm font-medium rounded-lg transition-all {{ $item['active'] ? 'bg-gradient-to-r from-[#FF7A00] to-[#FF9933] text-white font-bold shadow-lg shadow-orange-500/30 border-none rounded-xl transform scale-105 transition-all duration-300' : 'text-gray-500 hover:text-[#FF7A00] hover:bg-orange-50/50 hover:translate-x-1 transition-all duration-300 font-medium' }}">
-                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $item['icon'] !!}</svg>
+                        <svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $item['icon'] !!}</svg>
                         {{ $item['label'] }}
                     </a>
                 @endforeach
@@ -70,8 +71,8 @@
             <!-- Top Header -->
             <header class="mx-4 mt-4 px-6 py-3 rounded-full shadow-sm bg-gradient-to-r from-white/90 to-[#FFF1EB]/80 backdrop-blur-2xl border border-white/80 flex items-center justify-between sticky top-4 z-40">
                 <div class="flex items-center gap-4">
-                    <button @click="sidebarOpen = true" class="md:hidden text-gray-500 hover:text-[#FF7A00] focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <button @click="sidebarOpen = true" aria-label="Buka Menu" class="md:hidden text-gray-500 hover:text-[#FF7A00] focus:outline-none">
+                        <svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                     <div class="font-heading font-bold text-lg md:text-xl text-[#3D1A10]">
                         @yield('header_title', 'Dashboard')
@@ -85,7 +86,7 @@
                     </span>
                     
                     <div x-data="{ dropdownOpen: false }" class="relative">
-                        <button @click="dropdownOpen = !dropdownOpen" @click.away="dropdownOpen = false" class="flex items-center gap-2 hover:bg-orange-50 px-2 py-1.5 rounded-xl transition-colors outline-none">
+                        <button @click="dropdownOpen = !dropdownOpen" @click.away="dropdownOpen = false" aria-label="Menu Pengguna" aria-expanded="false" class="flex items-center gap-2 hover:bg-orange-50 px-2 py-1.5 rounded-xl transition-colors outline-none">
                             <span class="text-sm font-semibold text-[#3D1A10] hidden sm:inline-block">Halo, {{ auth('admin')->user()->name }}</span>
                             <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-[#FF7A00] font-bold">
                                 {{ strtoupper(substr(auth('admin')->user()->name, 0, 1)) }}

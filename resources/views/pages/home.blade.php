@@ -72,6 +72,33 @@
 
                 </p>
 
+                
+                @php
+                    $igLink = \App\Models\Setting::where('key', 'link_instagram')->first()->value ?? null;
+                    $tiktokLink = \App\Models\Setting::where('key', 'link_tiktok')->first()->value ?? null;
+                @endphp
+                
+                @if($igLink || $tiktokLink)
+                <div class="flex items-center justify-center lg:justify-start gap-4 mb-8">
+                    @if($igLink)
+                    <a href="{{ $igLink }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram DoFren" class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-gray-500 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] transition-all hover:scale-110 shadow-md">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="2"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"></line>
+                        </svg>
+                    </a>
+                    @endif
+                    
+                    @if($tiktokLink)
+                    <a href="{{ $tiktokLink }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok DoFren" class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-gray-500 hover:text-white hover:bg-black transition-all hover:scale-110 shadow-md">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 448 512">
+                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                    </a>
+                    @endif
+                </div>
+                @endif
             </div>
 
 
@@ -98,9 +125,9 @@
                         $heroUrl = $heroImage ? asset('storage/' . $heroImage) : 'https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600&auto=format&fit=crop';
                     @endphp
                     <img src="{{ $heroUrl }}"
-
                          alt="DoFren Signature Donut"
-
+                         width="400"
+                         height="400"
                          class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full mx-auto shadow-2xl border-8 border-white/70 relative z-10">
 
                     
@@ -151,7 +178,7 @@
 
         <!-- Subtle SVG Pattern Background -->
 
-        <svg class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        <svg aria-hidden="true" class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
 
             <defs>
 
@@ -249,7 +276,7 @@
 
                             <div class="relative">
 
-                                <img src="https://images.unsplash.com/{{ $card['img'] }}?q=80&w=400&auto=format&fit=crop" alt="{{ $card['name'] }}" class="h-48 w-full object-cover rounded-t-3xl group-hover:scale-105 transition-transform duration-500">
+                                <img src="https://images.unsplash.com/{{ $card['img'] }}?q=80&w=400&auto=format&fit=crop" alt="{{ $card['name'] }}" width="400" height="300" loading="lazy" class="h-48 w-full object-cover rounded-t-3xl group-hover:scale-105 transition-transform duration-500">
 
                                 @if($card['badge'])
 
@@ -269,16 +296,11 @@
 
                                     <span class="font-bold text-[#FF7A00] text-base">Rp {{ $card['price'] }}</span>
 
-                                    <button class="w-8 h-8 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] hover:bg-[#FF7A00] hover:text-white flex items-center justify-center transition-colors">
-
-                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/></svg>
-
+                                    <button aria-label="Add {{ $card['name'] }} to cart" class="w-8 h-8 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] hover:bg-[#FF7A00] hover:text-white flex items-center justify-center transition-colors">
+                                        <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/></svg>
                                     </button>
 
                                 </div>
-
-                            </div>
-
                         </div>
 
                     @endforeach
@@ -333,9 +355,9 @@
 
             <div class="py-6 md:py-0 border-y md:border-y-0 md:border-x border-white/10">
 
-                <p class="font-heading font-extrabold text-4xl md:text-3xl text-[#FF7A00]">4.9</p>
+                <p class="font-heading font-extrabold text-4xl md:text-3xl text-[#FF7A00]">4.7</p>
 
-                <p class="text-sm md:text-xs text-white/60 mt-1 font-medium">Rating di GoFood</p>
+                <p class="text-sm md:text-xs text-white/60 mt-1 font-medium">Rating di Google Maps</p>
 
             </div>
 
