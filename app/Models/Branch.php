@@ -44,7 +44,7 @@ class Branch extends Model
             return (bool) $value;
         }
 
-        $times = preg_split('/[-–]/', $this->open_hours);
+        $times = preg_split('/[-–]/u', $this->open_hours);
         if (count($times) === 2) {
             $start = trim($times[0]);
             $end = trim($times[1]);
