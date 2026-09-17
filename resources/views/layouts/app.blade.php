@@ -23,7 +23,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#FFFDF9] text-slate-800 antialiased font-body" x-data="{ isModalOpen: false, isMobileMenuOpen: false }">
+<body class="bg-[#FFFDF9] text-slate-800 antialiased font-body overflow-x-hidden" x-data="{ isModalOpen: false, isMobileMenuOpen: false }">
 
     <!-- Navigation Bar -->
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-orange-100 shadow-sm border-t-4 border-t-[#FF7A00]">
