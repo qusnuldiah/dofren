@@ -212,12 +212,9 @@
 
                 </div>
 
-                <a href="{{ route('menu.index') }}" class="text-sm font-bold text-[#FF7A00] hover:underline underline-offset-2 flex items-center gap-1">
-
+                <a href="{{ route('menu.index') }}" class="shrink-0 whitespace-nowrap text-sm font-bold text-[#FF7A00] hover:underline underline-offset-2 flex items-center gap-1">
                     Lihat Semua
-
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-
                 </a>
 
             </div>
