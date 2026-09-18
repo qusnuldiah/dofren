@@ -1,14 +1,8 @@
 @extends('layouts.app')
 
-
-
 @section('title', 'DoFren Donut - Pilih Teman Manismu')
 
-
-
 @section('content')
-
-
 
     {{-- ================================================================
 
@@ -18,17 +12,11 @@
 
     <section class="relative px-6 overflow-hidden bg-gradient-to-br from-[#FFFDF9] to-[#FFF1EB]">
 
-
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto px-4 min-h-[70vh]">
-
-
 
             {{-- Left: Typography & CTA --}}
 
             <div class="relative text-center md:text-left order-2 md:order-1 z-10">
-
-                
 
                 {{-- Decorative Sprinkles --}}
 
@@ -37,8 +25,6 @@
                 <div class="absolute top-10 lg:-right-4 w-4 h-4 bg-[#3D1A10] rounded-full opacity-30"></div>
 
                 <div class="absolute bottom-10 left-0 w-2.5 h-2.5 bg-pink-400 rounded-full opacity-50"></div>
-
-
 
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-[#FF7A00] text-sm font-bold mb-6 w-fit mx-auto lg:mx-0">
 
@@ -53,8 +39,6 @@
                     100% Bahan Premium & Fresh
 
                 </div>
-
-                
 
                 <h1 class="font-heading font-extrabold text-4xl lg:text-5xl text-[#3D1A10] leading-tight lg:leading-[1.2] mb-6">
 
@@ -72,7 +56,6 @@
 
                 </p>
 
-                
                 @php
                     $igLink = \App\Models\Setting::where('key', 'link_instagram')->first()->value ?? null;
                     $tiktokLink = \App\Models\Setting::where('key', 'link_tiktok')->first()->value ?? null;
@@ -101,20 +84,13 @@
                 @endif
             </div>
 
-
-
-
             {{-- Right: Image with Blob & Animations --}}
 
             <div class="relative flex items-center justify-center order-1 md:order-2 z-10 mt-10 md:mt-0">
 
-
-
                 {{-- Background Depth Blob --}}
 
                 <div class="absolute inset-0 m-auto w-56 h-56 bg-[#FF7A00]/15 rounded-full blur-3xl -z-10"></div>
-
-
 
                 {{-- Floating Product Image Container --}}
 
@@ -129,8 +105,6 @@
                          width="400"
                          height="400"
                          class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full mx-auto shadow-2xl border-8 border-white/70 relative z-10">
-
-                    
 
                     {{-- Floating Trust Badge --}}
 
@@ -154,17 +128,11 @@
 
                 </div>
 
-
-
             </div>
-
-
 
         </div>
 
     </section>
-
-
 
     {{-- ================================================================
 
@@ -173,8 +141,6 @@
     ================================================================ --}}
 
     <section class="px-6 py-12 bg-gradient-to-br from-[#FFFDF9] to-[#FFF1EB] relative overflow-hidden">
-
-        
 
         <!-- Subtle SVG Pattern Background -->
 
@@ -194,32 +160,20 @@
 
         </svg>
 
-
-
         <div class="max-w-6xl mx-auto relative z-10">
-
-
 
             {{-- Section Header --}}
 
-            <div class="flex items-end justify-between mb-8">
-
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8">
                 <div>
-
                     <p class="text-[#FF7A00] text-xs font-bold tracking-widest uppercase mb-1">Temukan Favoritmu</p>
-
                     <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-[#3D1A10]">Menu Unggulan Kami</h2>
-
                 </div>
-
-                <a href="{{ route('menu.index') }}" class="shrink-0 whitespace-nowrap text-sm font-bold text-[#FF7A00] hover:underline underline-offset-2 flex items-center gap-1">
+                <a href="{{ route('menu.index') }}" class="shrink-0 whitespace-nowrap text-sm font-bold text-[#FF7A00] hover:underline underline-offset-2 flex items-center gap-1 w-fit">
                     Lihat Semua
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                 </a>
-
             </div>
-
-
 
             {{-- PRODUCT CARDS GRID from DB --}}
 
@@ -293,8 +247,8 @@
 
                                     <span class="font-bold text-[#FF7A00] text-base">Rp {{ $card['price'] }}</span>
 
-                                    <button aria-label="Add {{ $card['name'] }} to cart" class="w-8 h-8 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] hover:bg-[#FF7A00] hover:text-white flex items-center justify-center transition-colors">
-                                        <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/></svg>
+                                    <button type="button" x-data @click.prevent="$dispatch('open-modal')" aria-label="Pesan {{ $card['name'] }}" class="w-8 h-8 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] hover:bg-[#FF7A00] hover:text-white flex items-center justify-center transition-colors">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                     </button>
 
                                 </div>
@@ -305,8 +259,6 @@
                 </div>
 
             @endif
-
-
 
             {{-- See All CTA --}}
 
@@ -322,15 +274,9 @@
 
             </div>
 
-
-
-
-
         </div>
 
     </section>
-
-
 
     {{-- ================================================================
 
@@ -369,7 +315,5 @@
         </div>
 
     </section>
-
-
 
 @endsection

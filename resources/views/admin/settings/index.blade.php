@@ -69,6 +69,21 @@
                        placeholder="https://shopee.co.id/..."
                        class="w-full px-4 py-3 bg-white text-sm rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#EE4D2D]/30 focus:border-[#EE4D2D] hover:border-gray-300 outline-none transition-all shadow-sm">
             </div>
+
+            <!-- WhatsApp Business -->
+            <div class="group relative">
+                <label class="flex items-center gap-3 text-sm font-semibold text-[#3D1A10] mb-2.5">
+                    <div class="w-9 h-9 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.031 2C6.491 2 2 6.49 2 12.031a10.02 10.02 0 001.341 5.01L2 22l5.105-1.336a10.04 10.04 0 004.926 1.286c5.54 0 10.031-4.49 10.031-10.031S17.571 2 12.031 2zm5.077 14.471c-.212.597-1.229 1.15-1.688 1.226-.459.076-1.036.195-3.327-.75-2.753-1.135-4.526-3.953-4.662-4.136-.135-.183-1.115-1.488-1.115-2.837 0-1.348.706-2.012.96-2.285.253-.274.55-.343.734-.343.183 0 .367.003.52.008.163.006.38-.065.594.455.214.52.735 1.79.801 1.921.066.132.11.286.027.452-.083.167-.124.271-.248.416-.123.146-.263.323-.374.453-.122.143-.25.3-.11.542.14.242.622 1.031 1.334 1.666.917.818 1.696 1.074 1.936 1.19.241.116.382.096.527-.07.145-.167.622-.727.788-.976.167-.25.333-.208.55-.125.217.083 1.378.65 1.614.767.237.118.396.177.454.276.059.098.059.57-.153 1.167z"/>
+                        </svg>
+                    </div>
+                    Tautan WhatsApp Business
+                </label>
+                <input type="url" name="link_whatsapp" value="{{ old('link_whatsapp', $settings['link_whatsapp'] ?? '') }}"
+                       placeholder="https://wa.me/628..."
+                       class="w-full px-4 py-3 bg-white text-sm rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#25D366]/30 focus:border-[#25D366] hover:border-gray-300 outline-none transition-all shadow-sm">
+            </div>
             
             <hr class="border-gray-100 my-4">
 

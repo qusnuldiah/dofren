@@ -100,28 +100,20 @@
         </div>
         @endif
 
-        {{-- Qty Selector --}}
-        @if($product->is_available)
-        <div style="margin-bottom:24px">
-          <label style="font-size:14px;font-weight:600;color:var(--dark);display:block;margin-bottom:10px">Jumlah</label>
-          <div class="qty-selector">
-            <button type="button" class="qty-btn" onclick="DetailPage.changeQty(-1)">−</button>
-            <span class="qty-num" id="detailQty">1</span>
-            <button type="button" class="qty-btn" onclick="DetailPage.changeQty(1)">+</button>
-          </div>
-        </div>
+
 
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <button
+            type="button"
+            x-data @click="$dispatch('open-modal')"
             class="btn btn-primary btn-lg"
-            onclick="DetailPage.addToCart()"
-            style="flex:1;justify-content:center">
+            style="flex:1;justify-content:center; border:none; cursor:pointer;">
             <i class="ri-shopping-cart-line"></i>
-            Tambah ke Keranjang — <span id="detailPrice">{{ $product->formatted_price }}</span>
+            Pesan Sekarang — <span>{{ $product->formatted_price }}</span>
           </button>
-          <a href="{{ route('order.index') }}" class="btn btn-dark btn-lg" style="justify-content:center">
+          <button type="button" x-data @click="$dispatch('open-modal')" class="btn btn-dark btn-lg" style="justify-content:center; border:none; cursor:pointer;">
             <i class="ri-lightning-fill"></i> Pesan Langsung
-          </a>
+          </button>
         </div>
         @else
         <div style="background:#FEE2E2;border-radius:var(--radius-md);padding:16px 20px;color:#DC2626;font-weight:600">
@@ -129,11 +121,10 @@
         </div>
         @endif
 
-        {{-- Share --}}
         <div style="margin-top:24px;display:flex;align-items:center;gap:12px">
           <span style="font-size:13px;color:var(--text-muted)">Bagikan:</span>
-          <button onclick="navigator.share ? navigator.share({title:'{{ $product->name }}',url:window.location.href}) : navigator.clipboard.writeText(window.location.href).then(()=>DoFren.showToast('Link Disalin!','',  'success'))"
-                  class="btn btn-sm" style="background:var(--gray-100);color:var(--dark)">
+          <button onclick="navigator.share ? navigator.share({title:'{{ addslashes($product->name) }}',url:window.location.href}) : navigator.clipboard.writeText(window.location.href).then(()=>alert('Link Disalin!'))"
+                  class="btn btn-sm" style="background:var(--gray-100);color:var(--dark);border:none;cursor:pointer;">
             <i class="ri-share-line"></i> Share
           </button>
         </div>
@@ -164,8 +155,7 @@
             </h3>
             <div class="product-footer">
               <span class="price-current">{{ $related->formatted_price }}</span>
-              <button class="add-cart-btn"
-                onclick="DoFren.addToCart({id:{{ $related->id }},name:'{{ addslashes($related->name) }}',price:{{ $related->price }},image:'https://picsum.photos/seed/{{ $related->slug }}/80/80'})">
+              <button type="button" x-data @click.prevent="$dispatch('open-modal')" class="add-cart-btn" style="border:none;cursor:pointer;">
                 <i class="ri-add-line"></i>
               </button>
             </div>
@@ -181,39 +171,4 @@
 
 @endsection
 
-@push('scripts')
-<script>
-const DetailPage = {
-  qty: 1,
-  price: {{ $product->price }},
-  product: {
-    id: {{ $product->id }},
-    name: '{{ addslashes($product->name) }}',
-    price: {{ $product->price }},
-    image: 'https://picsum.photos/seed/{{ $product->slug }}/80/80'
-  },
 
-  changeQty(delta) {
-    this.qty = Math.max(1, this.qty + delta);
-    document.getElementById('detailQty').textContent = this.qty;
-    document.getElementById('detailPrice').textContent =
-      'Rp ' + (this.price * this.qty).toLocaleString('id-ID');
-  },
-
-  addToCart() {
-    for (let i = 0; i < this.qty; i++) {
-      DoFren.addToCart(this.product);
-    }
-    // If added more than 1, fix the count
-    if (this.qty > 1) {
-      const item = DoFren.cart.find(c => c.id === this.product.id);
-      if (item) {
-        item.qty = this.qty + (item.qty - this.qty);
-        DoFren.saveCart();
-      }
-    }
-    DoFren.openCart();
-  }
-};
-</script>
-@endpush

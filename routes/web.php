@@ -13,10 +13,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
 Route::get('/menu/{slug}', [MenuController::class, 'show'])->name('menu.show');
 
-// Order
-Route::get('/pesan', [OrderController::class, 'index'])->name('order.index');
-Route::post('/pesan', [OrderController::class, 'store'])->name('order.store');
-Route::get('/lacak-pesanan', [OrderController::class, 'track'])->name('order.track');
+// Order (Dihapus sesuai permintaan, sekarang menggunakan modal GoFood/GrabFood/ShopeeFood)
 
 // Location
 Route::get('/lokasi', [LocationController::class, 'index'])->name('location.index');

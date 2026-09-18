@@ -20,6 +20,7 @@ class SettingController extends Controller
             'link_gofood' => 'nullable|url',
             'link_grabfood' => 'nullable|url',
             'link_shopeefood' => 'nullable|url',
+            'link_whatsapp' => 'nullable|url',
             'link_instagram' => 'nullable|url',
             'link_tiktok' => 'nullable|url',
             'hero_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',

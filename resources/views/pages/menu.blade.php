@@ -16,8 +16,8 @@
         
         {{-- Filter Pills --}}
         <div class="sticky top-16 md:top-24 z-30 bg-[#FFFDF9]/95 backdrop-blur-sm pt-3 pb-4 border-b border-orange-50">
-            <div class="overflow-x-auto no-scrollbar pl-6">
-                <div class="max-w-6xl mx-auto flex gap-2 whitespace-nowrap pr-6 pb-2">
+            <div class="overflow-x-auto no-scrollbar">
+                <div class="max-w-6xl mx-auto flex gap-2 whitespace-nowrap px-6 pb-2">
                 <button @click="activeCategory = 'Semua'" 
                         :class="activeCategory === 'Semua' ? 'bg-[#FF7A00] text-white shadow-lg transform scale-105' : 'bg-white text-gray-600 border border-gray-200 hover:bg-orange-50 hover:text-[#FF7A00]'" 
                         class="inline-block px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 cursor-pointer focus:outline-none">
@@ -87,10 +87,8 @@
                                         <p class="text-xs text-slate-400 line-clamp-2 mb-2 leading-relaxed">{{ $product->description }}</p>
                                         <div class="flex items-center justify-between">
                                             <span class="font-bold text-[#FF7A00] text-sm">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                            <button aria-label="Add {{ $product->name }} to cart" class="w-7 h-7 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] group-hover:bg-[#FF7A00] group-hover:text-white flex items-center justify-center transition-colors duration-300">
-                                                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 5v14M5 12h14"/>
-                                                </svg>
+                                            <button type="button" x-data @click.prevent="$dispatch('open-modal')" aria-label="Pesan {{ $product->name }}" class="w-7 h-7 rounded-full bg-[#FF7A00]/10 text-[#FF7A00] hover:bg-[#FF7A00] hover:text-white flex items-center justify-center transition-colors duration-300">
+                                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                             </button>
                                         </div>
                                     </div>

@@ -99,6 +99,24 @@
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                     </svg>
                 </a>
+
+                <!-- WhatsApp Business -->
+                <a href="{{ $platformLinks['link_whatsapp'] ?? '#' }}" 
+                   target="{{ isset($platformLinks['link_whatsapp']) && $platformLinks['link_whatsapp'] ? '_blank' : '' }}"
+                   class="flex items-center p-4 bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-xl hover:border-[#25D366] transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-sm text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.031 2C6.491 2 2 6.49 2 12.031a10.02 10.02 0 001.341 5.01L2 22l5.105-1.336a10.04 10.04 0 004.926 1.286c5.54 0 10.031-4.49 10.031-10.031S17.571 2 12.031 2zm5.077 14.471c-.212.597-1.229 1.15-1.688 1.226-.459.076-1.036.195-3.327-.75-2.753-1.135-4.526-3.953-4.662-4.136-.135-.183-1.115-1.488-1.115-2.837 0-1.348.706-2.012.96-2.285.253-.274.55-.343.734-.343.183 0 .367.003.52.008.163.006.38-.065.594.455.214.52.735 1.79.801 1.921.066.132.11.286.027.452-.083.167-.124.271-.248.416-.123.146-.263.323-.374.453-.122.143-.25.3-.11.542.14.242.622 1.031 1.334 1.666.917.818 1.696 1.074 1.936 1.19.241.116.382.096.527-.07.145-.167.622-.727.788-.976.167-.25.333-.208.55-.125.217.083 1.378.65 1.614.767.237.118.396.177.454.276.059.098.059.57-.153 1.167z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="font-heading font-bold text-[#3D1A10] group-hover:text-[#25D366] transition-colors">WhatsApp</h3>
+                        <p class="text-xs text-slate-500">Pesan langsung ke WA Admin</p>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-300 group-hover:text-[#25D366] transition-colors" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
             </div>
         </div>
     </div>

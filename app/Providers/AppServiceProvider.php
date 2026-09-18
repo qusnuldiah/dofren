@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         try {
             if (\Illuminate\Support\Facades\Schema::hasTable('settings')) {
-                $platformLinks = \App\Models\Setting::whereIn('key', ['link_gofood', 'link_grabfood', 'link_shopeefood'])
+                $platformLinks = \App\Models\Setting::whereIn('key', ['link_gofood', 'link_grabfood', 'link_shopeefood', 'link_whatsapp'])
                     ->pluck('value', 'key')
                     ->toArray();
                 \Illuminate\Support\Facades\View::share('platformLinks', $platformLinks);

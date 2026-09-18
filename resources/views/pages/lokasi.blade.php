@@ -87,8 +87,13 @@
                             Lihat di Maps
                         </a>
                         @if($branch->phone)
-                            <a href="tel:{{ $branch->phone }}" class="w-12 bg-slate-100 hover:bg-slate-200 text-[#3D1A10] rounded-xl flex items-center justify-center transition-colors" title="Hubungi" aria-label="Hubungi {{ $branch->name }}">
-                                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            @php
+                                $waNumber = preg_replace('/^0/', '62', preg_replace('/\D/', '', $branch->phone));
+                            @endphp
+                            <a href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="w-12 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] rounded-xl flex items-center justify-center transition-colors" title="Chat WA" aria-label="WhatsApp {{ $branch->name }}">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.031 2C6.491 2 2 6.49 2 12.031a10.02 10.02 0 001.341 5.01L2 22l5.105-1.336a10.04 10.04 0 004.926 1.286c5.54 0 10.031-4.49 10.031-10.031S17.571 2 12.031 2zm5.077 14.471c-.212.597-1.229 1.15-1.688 1.226-.459.076-1.036.195-3.327-.75-2.753-1.135-4.526-3.953-4.662-4.136-.135-.183-1.115-1.488-1.115-2.837 0-1.348.706-2.012.96-2.285.253-.274.55-.343.734-.343.183 0 .367.003.52.008.163.006.38-.065.594.455.214.52.735 1.79.801 1.921.066.132.11.286.027.452-.083.167-.124.271-.248.416-.123.146-.263.323-.374.453-.122.143-.25.3-.11.542.14.242.622 1.031 1.334 1.666.917.818 1.696 1.074 1.936 1.19.241.116.382.096.527-.07.145-.167.622-.727.788-.976.167-.25.333-.208.55-.125.217.083 1.378.65 1.614.767.237.118.396.177.454.276.059.098.059.57-.153 1.167z"/>
+                                </svg>
                             </a>
                         @endif
                     </div>
@@ -101,7 +106,15 @@
             <div class="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm">
                 <div class="flex justify-between items-start mb-3">
                     <h3 class="font-heading font-bold text-xl text-[#3D1A10]">DoFren Malang</h3>
-                    <span class="bg-green-100 text-green-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Buka</span>
+                    @php
+                        $currentTime = now()->setTimezone('Asia/Jakarta')->format('H:i');
+                        $isOpenFallback = $currentTime >= '07:00' && $currentTime <= '22:00';
+                    @endphp
+                    @if($isOpenFallback)
+                        <span class="bg-green-100 text-green-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Buka</span>
+                    @else
+                        <span class="bg-red-100 text-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Tutup</span>
+                    @endif
                 </div>
                 <div class="flex gap-3 text-slate-500 text-sm mb-2">
                     <svg class="shrink-0 mt-0.5 text-[#FF7A00]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>

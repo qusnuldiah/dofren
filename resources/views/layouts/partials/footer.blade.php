@@ -46,9 +46,9 @@
       <div>
         <h4 class="footer-col-title">Informasi</h4>
         <ul class="footer-links">
-          <li><a href="{{ route('order.index') }}" class="footer-link"><i class="ri-arrow-right-s-line"></i>Pesan Online</a></li>
+          <li><button type="button" x-data @click="$dispatch('open-modal')" class="footer-link" style="background:transparent;border:none;padding:0;text-align:left;cursor:pointer;"><i class="ri-arrow-right-s-line"></i>Pesan Online</button></li>
           <li><a href="{{ route('location.index') }}" class="footer-link"><i class="ri-arrow-right-s-line"></i>Lokasi Kami</a></li>
-          <li><a href="{{ route('order.track') }}" class="footer-link"><i class="ri-arrow-right-s-line"></i>Lacak Pesanan</a></li>
+
           <li><a href="#" class="footer-link"><i class="ri-arrow-right-s-line"></i>Promo & Diskon</a></li>
         </ul>
       </div>
