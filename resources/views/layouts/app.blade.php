@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DoFren Donut - Toko donat premium segar setiap hari. Pesan donat favoritmu sekarang.">
-    <title>@yield('title', 'DoFren Donut')</title>
+    <meta name="description" content="DoFren Donut Malang - Toko donat kentang premium, lembut, dan fresh setiap hari di Malang. Banyak varian rasa, cocok untuk hampers dan cemilan keluarga.">
+    <meta name="keywords" content="donat malang, donat kentang, dofren, dofren donat, donat premium, kuliner malang, hampers donat">
+    <meta name="author" content="DoFren Donut">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'DoFren Donut Malang | Donat Kentang Premium')">
+    <meta property="og:description" content="DoFren Donut - Toko donat kentang premium dan fresh setiap hari di Malang. Pesan sekarang untuk dikirim via GoFood, GrabFood, atau ShopeeFood!">
+    <meta property="og:image" content="{{ asset('images/logo dofren.png') }}">
+
+    <title>@yield('title', 'DoFren Donut Malang | Donat Kentang Premium')</title>
     <link rel="icon" href="{{ asset('images/logo dofren.png') }}">
     
     <!-- Fonts -->
